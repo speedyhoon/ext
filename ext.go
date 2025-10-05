@@ -1,4 +1,4 @@
-// Package ext declares commonly used file extension constants.
+// Package ext declares commonly used file extension and file suffix constants.
 package ext
 
 const (
