@@ -5,8 +5,8 @@ const (
 	BMP    = ".bmp" // Bitmap Image
 	CSS    = ".css" // Cascading Style Sheet
 	Go     = ".go"
-	GoHTML = ".gohtml"
-	HTM    = ".htm" // HyperText Markup Language
+	GoHTML = ".gohtml" // Go HTML template
+	HTM    = ".htm"    // HyperText Markup Language
 	HTML   = ".html"
 	ICO    = ".ico"   // Icon
 	INI    = ".ini"   // Configuration

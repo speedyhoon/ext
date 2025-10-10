@@ -2,6 +2,7 @@ package ext_test
 
 import (
 	"github.com/speedyhoon/ext"
+	"strings"
 	"testing"
 )
 
@@ -36,6 +37,9 @@ func TestExtensions(t *testing.T) {
 		t.Run(expected, func(t *testing.T) {
 			if val != expected {
 				t.Errorf("expected extension[%d]: `%s`, got: `%s`", i, expected, val)
+			}
+			if val != strings.ToLower(val) {
+				t.Errorf("expected extension[%d] to be lowercase: `%s`", i, val)
 			}
 		})
 	}
