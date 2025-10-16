@@ -70,7 +70,7 @@ func TestIsGo(t *testing.T) {
 		"only ext":    {path: ".go", want: true},
 		"suffix":      {path: "_test.go", want: true},
 		"no ext":      {path: "hello", want: false},
-		"missing ext": {path: "hello", want: false},
+		"missing ext": {path: "hello_test", want: false},
 		"filename":    {path: "hello.go", want: true},
 		"path":        {path: "C:\\Users\\Foo\\hello", want: false},
 		"filepath":    {path: "C:\\Users\\Foo\\hello.go", want: true},
