@@ -1,8 +1,8 @@
-// Package ext declares commonly used file extension and file suffix constants.
+// Package ext provides helpful functions for checking and modifying file extensions and file suffixes. Plus a list of string constants for commonly used file extensions and file suffixes.
 package ext
 
 const (
-	BMP    = ".bmp" // Bitmap Image
+	BMP    = ".bmp" // Bitmap image
 	CSS    = ".css" // Cascading Style Sheet
 	Go     = ".go"
 	GoHTML = ".gohtml" // Go HTML template
@@ -11,7 +11,7 @@ const (
 	ICO    = ".ico"   // Icon
 	INI    = ".ini"   // Configuration
 	ISS    = ".iss"   // Inno Setup script
-	JPG    = ".jpg"   // JPEG Image
+	JPG    = ".jpg"   // JPEG image
 	JS     = ".js"    // JavaScript
 	JSON   = ".json"  // JavaScript Object Notation
 	Log    = ".log"   // Logging
