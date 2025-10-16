@@ -5,6 +5,35 @@ import (
 	"testing"
 )
 
+func Test_EqualFold(t *testing.T) {
+	var tests = []struct {
+		s, ext string
+		want   bool
+	}{
+		{"abc", "abc", true},
+		{"ABcd", "ABcd", true},
+		{"123abc", "123ABC", true},
+		{"αβδ", "ΑΒΔ", false},
+		{"abc", "xyz", false},
+		{"abc", "XYZ", false},
+		{"abcdefghijk", "abcdefghijX", false},
+		{"abcdefghijk", "abcdefghij\u212A", false},
+		{"abcdefghijK", "abcdefghij\u212A", false},
+		{"abcdefghijkz", "abcdefghij\u212Ay", false},
+		{"abcdefghijKz", "abcdefghij\u212Ay", false},
+		{"1", "2", false},
+		{"utf-8", "US-ASCII", false},
+	}
+	for _, tt := range tests {
+		if out := ext.EqualFold(tt.s, tt.ext); out != tt.want {
+			t.Errorf("EqualFold(%#q, %#q) = %v, want %v", tt.s, tt.ext, out, tt.want)
+		}
+		if out := ext.EqualFold(tt.ext, tt.s); out != tt.want {
+			t.Errorf("EqualFold(%#q, %#q) = %v, want %v", tt.ext, tt.s, out, tt.want)
+		}
+	}
+}
+
 func TestIs(t *testing.T) {
 	tests := map[string]struct {
 		path string
@@ -60,7 +89,6 @@ func TestIsGoTest(t *testing.T) {
 		path string
 		want bool
 	}{
-
 		"file suffix":     {path: "hello_test.go", want: true},
 		"path suffix":     {path: "C:\\Users\\Foo\\hello_test.go", want: true},
 		"filepath suffix": {path: "C:\\Users\\Foo\\hello_test.go", want: true},
