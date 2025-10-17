@@ -7,29 +7,33 @@ import (
 
 func Test_EqualFold(t *testing.T) {
 	var tests = []struct {
-		s, ext string
-		want   bool
+		s, ext  string
+		want    bool
+		swapped bool
 	}{
-		{"abc", "abc", true},
-		{"ABcd", "ABcd", true},
-		{"123abc", "123ABC", true},
-		{"αβδ", "ΑΒΔ", false},
-		{"abc", "xyz", false},
-		{"abc", "XYZ", false},
-		{"abcdefghijk", "abcdefghijX", false},
-		{"abcdefghijk", "abcdefghij\u212A", false},
-		{"abcdefghijK", "abcdefghij\u212A", false},
-		{"abcdefghijkz", "abcdefghij\u212Ay", false},
-		{"abcdefghijKz", "abcdefghij\u212Ay", false},
-		{"1", "2", false},
-		{"utf-8", "US-ASCII", false},
+		{"abc", "abc", true, true},
+		{"ABcd", "ABcd", true, true},
+		{"123abc", "123ABC", true, true},
+		{"αβδ", "ΑΒΔ", false, false},
+		{"abc", "xyz", false, false},
+		{"abc", "XYZ", false, false},
+		{"abcdefghijk", "abcdefghijX", false, false},
+		{"abcdefghijk", "abcdefghij\u212A", false, false},
+		{"abcdefghijK", "abcdefghij\u212A", false, false},
+		{"abcdefghijkz", "abcdefghij\u212Ay", false, false},
+		{"abcdefghijKz", "abcdefghij\u212Ay", false, false},
+		{"1", "2", false, false},
+		{"utf-8", "US-ASCII", false, false},
+		{"😀✏️😜⚙️↘️🔗😆🏴‍🏁☠️🫥☹️", "☠️🫥☹️", true, false},
+		{"🏎️🏍️🚗🛻🚲🛴🛹", "🏎️🏍️🚗🛻🚲🛴🛹", true, true},
+		{"112211", "211", true, false},
 	}
 	for _, tt := range tests {
 		if out := ext.EqualFold(tt.s, tt.ext); out != tt.want {
-			t.Errorf("EqualFold(%#q, %#q) = %v, want %v", tt.s, tt.ext, out, tt.want)
+			t.Errorf("EqualFold(%#q, %#q) = %v, want: %v", tt.s, tt.ext, out, tt.want)
 		}
-		if out := ext.EqualFold(tt.ext, tt.s); out != tt.want {
-			t.Errorf("EqualFold(%#q, %#q) = %v, want %v", tt.ext, tt.s, out, tt.want)
+		if out := ext.EqualFold(tt.ext, tt.s); out != tt.swapped {
+			t.Errorf("EqualFold(%#q, %#q) = %v, swapped: %v", tt.ext, tt.s, out, tt.swapped)
 		}
 	}
 }

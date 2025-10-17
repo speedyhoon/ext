@@ -19,14 +19,19 @@ func EqualFold(path, ext string) bool {
 		switch c, x := suffix[i], ext[i]; {
 		case c == x:
 			continue
+
 		case c >= 'A' && c <= 'Z':
+			// c: uppercase, x: lowercase.
 			if c+toLowerCase != x {
 				return false
 			}
+
 		case x >= 'A' && x <= 'Z':
+			// c: lowercase, x: uppercase.
 			if c != x+toLowerCase {
 				return false
 			}
+
 		default:
 			return false
 		}
