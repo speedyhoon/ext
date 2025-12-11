@@ -31,6 +31,7 @@ func TestExtensions(t *testing.T) {
 		{ext.TXT, ".txt"},
 		{ext.XHTML, ".xhtml"},
 		{ext.YML, ".yml"},
+		{ext.WEBP, ".webp"},
 	}
 	for i, item := range list {
 		val, expected := item[0], item[1]

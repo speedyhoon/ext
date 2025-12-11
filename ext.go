@@ -23,4 +23,5 @@ const (
 	TXT    = ".txt"   // Text file
 	XHTML  = ".xhtml" // Extensible Hypertext Markup Language
 	YML    = ".yml"   // YAML source
+	WEBP   = ".webp"  // WebP image
 )
