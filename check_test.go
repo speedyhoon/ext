@@ -1,6 +1,7 @@
 package ext_test
 
 import (
+	"fmt"
 	"github.com/speedyhoon/ext"
 	"testing"
 )
@@ -59,6 +60,54 @@ func TestIs(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			if got := ext.Is(tt.path, tt.ext); got != tt.want {
 				t.Errorf("Is() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestIsAny(t *testing.T) {
+	tests := []struct {
+		path       string
+		extensions []string
+		want       bool
+	}{
+		{path: "", extensions: nil, want: false},
+		{path: "", extensions: []string{ext.Go}, want: false},
+		{path: "name.go", extensions: []string{ext.Go}, want: true},
+		{path: "/name.go", extensions: []string{ext.Go}, want: true},
+		{path: "dir/name.go", extensions: []string{ext.Go}, want: true},
+		{path: "name.GO", extensions: []string{ext.Go}, want: false},
+		{path: "/name.GO", extensions: []string{ext.Go}, want: false},
+		{path: "dir/name.GO", extensions: []string{ext.Go}, want: false},
+	}
+	for i, tt := range tests {
+		t.Run(fmt.Sprintf("test[%d]", i), func(t *testing.T) {
+			if got := ext.IsAny(tt.path, tt.extensions...); got != tt.want {
+				t.Errorf("IsAny() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestIsAnyFold(t *testing.T) {
+	tests := []struct {
+		path       string
+		extensions []string
+		want       bool
+	}{
+		{path: "", extensions: nil, want: false},
+		{path: "", extensions: []string{ext.Go}, want: false},
+		{path: "name.go", extensions: []string{ext.Go}, want: true},
+		{path: "/name.go", extensions: []string{ext.Go}, want: true},
+		{path: "dir/name.go", extensions: []string{ext.Go}, want: true},
+		{path: "name.GO", extensions: []string{ext.Go}, want: true},
+		{path: "/name.GO", extensions: []string{ext.Go}, want: true},
+		{path: "dir/name.GO", extensions: []string{ext.Go}, want: true},
+	}
+	for i, tt := range tests {
+		t.Run(fmt.Sprintf("test[%d]", i), func(t *testing.T) {
+			if got := ext.IsAnyFold(tt.path, tt.extensions...); got != tt.want {
+				t.Errorf("IsAny() = %v, want %v", got, tt.want)
 			}
 		})
 	}

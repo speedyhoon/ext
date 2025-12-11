@@ -44,6 +44,26 @@ func Is(path, ext string) bool {
 	return ext != "" && strings.HasSuffix(path, ext)
 }
 
+// IsAny returns true if the path ends with any of the file extensions or filename suffixes.
+func IsAny(path string, extensions ...string) bool {
+	for _, extension := range extensions {
+		if Is(path, extension) {
+			return true
+		}
+	}
+	return false
+}
+
+// IsAnyFold returns true if the path ends with any of the file extensions or filename suffixes, ignoring case.
+func IsAnyFold(path string, extensions ...string) bool {
+	for _, extension := range extensions {
+		if EqualFold(path, extension) {
+			return true
+		}
+	}
+	return false
+}
+
 // IsGo performs a case-sensitive check if a filepath ends with a `.go` file extension.
 // IsGo is shorthand for ext.Is(path, ext.Go)
 func IsGo(path string) bool {
