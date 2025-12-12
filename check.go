@@ -1,6 +1,20 @@
 package ext
 
-import "strings"
+import (
+	"path/filepath"
+	"strings"
+)
+
+// Del removes the path's file extension.
+// If a path contains several extensions, then only the last one is removed.
+func Del(path string) string {
+	xt := filepath.Ext(path)
+	if xt != "" {
+		return path[:len(path)-len(xt)]
+	}
+
+	return path
+}
 
 // EqualFold determines if the path's extension is the same as ext, ignoring case.
 func EqualFold(path, ext string) bool {

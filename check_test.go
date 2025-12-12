@@ -6,6 +6,27 @@ import (
 	"testing"
 )
 
+func TestDel(t *testing.T) {
+	tests := []struct {
+		path string
+		want string
+	}{
+		{path: "", want: ""},
+		{path: "a", want: "a"},
+		{path: "name.gif", want: "name"},
+		{path: "down-load.1.3.6.tar.gz", want: "down-load.1.3.6.tar"},
+		{path: "images/name.gif", want: "images/name"},
+		{path: "C:\\Archive\\down-load.1.3.6.tar.gz", want: "C:\\Archive\\down-load.1.3.6.tar"},
+	}
+	for i, tt := range tests {
+		t.Run(fmt.Sprintf("test[%d]", i), func(t *testing.T) {
+			if got := ext.Del(tt.path); got != tt.want {
+				t.Errorf("Del() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
 func Test_EqualFold(t *testing.T) {
 	var tests = []struct {
 		s, ext  string
