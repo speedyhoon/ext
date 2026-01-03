@@ -28,6 +28,7 @@ func TestExtensions(t *testing.T) {
 		{ext.PNG, ".png"},
 		{ext.STYL, ".styl"},
 		{ext.SVG, ".svg"},
+		{ext.TIFF, ".tiff"},
 		{ext.TXT, ".txt"},
 		{ext.XHTML, ".xhtml"},
 		{ext.YML, ".yml"},

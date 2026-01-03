@@ -20,8 +20,9 @@ const (
 	PNG    = ".png"   // Portable Network Graphic
 	STYL   = ".styl"  // Stylus style sheet
 	SVG    = ".svg"   // Scalable Vector Graphic
+	TIFF   = ".tiff"  // Tagged Image File Format
 	TXT    = ".txt"   // Text file
+	WEBP   = ".webp"  // WebP image
 	XHTML  = ".xhtml" // Extensible Hypertext Markup Language
 	YML    = ".yml"   // YAML source
-	WEBP   = ".webp"  // WebP image
 )
