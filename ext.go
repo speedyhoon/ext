@@ -14,7 +14,7 @@ const (
 	JPG    = ".jpg"   // JPEG image
 	JS     = ".js"    // JavaScript
 	JSON   = ".json"  // JavaScript Object Notation
-	Log    = ".log"   // Logging
+	LOG    = ".log"   // Logging
 	MD     = ".md"    // Markdown
 	PDF    = ".pdf"   // Portable Document Format
 	PNG    = ".png"   // Portable Network Graphic

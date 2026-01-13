@@ -22,7 +22,7 @@ func TestExtensions(t *testing.T) {
 		{ext.JPG, ".jpg"},
 		{ext.JS, ".js"},
 		{ext.JSON, ".json"},
-		{ext.Log, ".log"},
+		{ext.LOG, ".log"},
 		{ext.MD, ".md"},
 		{ext.PDF, ".pdf"},
 		{ext.PNG, ".png"},
@@ -30,9 +30,9 @@ func TestExtensions(t *testing.T) {
 		{ext.SVG, ".svg"},
 		{ext.TIFF, ".tiff"},
 		{ext.TXT, ".txt"},
+		{ext.WEBP, ".webp"},
 		{ext.XHTML, ".xhtml"},
 		{ext.YML, ".yml"},
-		{ext.WEBP, ".webp"},
 	}
 	for i, item := range list {
 		val, expected := item[0], item[1]
