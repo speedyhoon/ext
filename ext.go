@@ -4,6 +4,7 @@ package ext
 const (
 	BMP    = ".bmp" // Bitmap image
 	CSS    = ".css" // Cascading Style Sheet
+	DB     = ".db"  // Database file
 	Go     = ".go"
 	GoHTML = ".gohtml" // Go HTML template
 	HTM    = ".htm"    // HyperText Markup Language

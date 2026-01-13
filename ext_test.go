@@ -11,6 +11,7 @@ func TestExtensions(t *testing.T) {
 		// {Constant, Expected},
 		{ext.BMP, ".bmp"},
 		{ext.CSS, ".css"},
+		{ext.DB, ".db"},
 		{ext.Go, ".go"},
 		{ext.GoHTML, ".gohtml"},
 		{ext.GoTest, "_test.go"},
