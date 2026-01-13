@@ -2,6 +2,7 @@
 package ext
 
 const (
+	BAK    = ".bak" // Backup file
 	BMP    = ".bmp" // Bitmap image
 	CSS    = ".css" // Cascading Style Sheet
 	DB     = ".db"  // Database file

@@ -9,6 +9,7 @@ import (
 func TestExtensions(t *testing.T) {
 	list := [][2]string{
 		// {Constant, Expected},
+		{ext.BAK, ".bak"},
 		{ext.BMP, ".bmp"},
 		{ext.CSS, ".css"},
 		{ext.DB, ".db"},
